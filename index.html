@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Susanna Brechko | PPC & SEM</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          "Helvetica Neue",
+          Arial,
+          sans-serif;
+        font-weight: 300;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #475569;
+        background: #ffffff;
+        overflow-x: hidden;
+      }
+      .hero {
+        height: 100vh;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-shadow: inset 0 1px 0 #f1f5f9;
+      }
+      .hero-content {
+        animation: fadeInUp 1s ease-out;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 8px;
+        font-weight: 400;
+        color: #0f172a;
+      }
+      .subtitle {
+        font-size: 1.05rem;
+        color: #64748b;
+        margin-bottom: 32px;
+        font-weight: 300;
+      }
+      .top-links {
+        display: flex;
+        margin-top: 35px;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .top-links a {
+        padding: 10px 20px;
+        background: #f8fafc;
+        color: #334155;
+        text-decoration: none;
+        border-radius: 50px;
+        min-width: 150px;
+        font-weight: 400;
+        transition: all 0.3s;
+        border: 1px solid #e2e8f0;
+        font-size: 0.95rem;
+      }
+      .top-links a:hover {
+        background: #e2e8f0;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      section {
+        padding: 60px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        background: #ffffff;
+      }
+      h2 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 48px;
+        font-weight: 400;
+        color: #1e293b;
+      }
+      /* Reviews */
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px; /* Для линий */
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      .review-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 24px;
+        text-align: left;
+        position: relative;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        transition: none;
+        font-size: 0.95rem;
+      }
+
+      /* ЛИНИИ ТОЛЬКО МЕЖДУ (крест) */
+      .review-card:nth-child(1) {
+        border-right: 1px solid #dddddd;
+        border-bottom: 1px solid #dddddd;
+      }
+      .review-card:nth-child(2) {
+        border-bottom: 1px solid #dddddd;
+      }
+      .review-card:nth-child(3) {
+        border-right: 1px solid #dddddd;
+      }
+
+      .stars {
+        color: #fbbf24;
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+      }
+      .review-text {
+        font-style: italic;
+        margin-bottom: 16px;
+        color: #64748b;
+      }
+      .review-author {
+        font-weight: 500;
+        color: #475569;
+        font-size: 0.9rem;
+      }
+
+      /* Мобильные — вертикальный список */
+      @media (max-width: 768px) {
+        .reviews-grid {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .review-card {
+          padding: 24px 20px;
+          text-align: center;
+          border: none;
+        }
+        .review-card:not(:first-child) {
+          border-top: 1px solid #dddddd;
+        }
+        .review-card:nth-child(1),
+        .review-card:nth-child(3) {
+          border-right: none;
+          border-bottom: none;
+        }
+      }
+
+      /* Experience — та же ширина что отзывы */
+      .experience {
+        padding: 60px 20px;
+        max-width: 700px; /* Как reviews-grid */
+        margin: 0 auto;
+        background: #ffffff;
+      }
+      .experience ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .exp-item {
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .exp-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.75rem;
+        gap: 0.75rem;
+      }
+      .exp-title {
+        font-size: 1.05rem;
+        font-weight: 400;
+        color: #1e293b;
+        margin: 0;
+        flex: 1;
+      }
+      .exp-date {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        font-weight: 300;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .exp-bullets {
+        padding-left: 1.25rem;
+        color: #64748b;
+        font-size: 0.9rem;
+        font-weight: 300;
+        margin: 0.5rem 0 0 0;
+      }
+      .exp-bullets li {
+        margin-bottom: 0.25rem;
+        list-style: disc;
+      }
+
+      /* Мобильные */
+      @media (max-width: 768px) {
+        .exp-header {
+          flex-direction: column;
+          gap: 0.25rem;
+          align-items: flex-start;
+        }
+        .exp-title {
+          font-size: 1rem;
+        }
+      }
+
+      /* Footer */
+      footer {
+        padding: 48px 20px 32px;
+        text-align: center;
+      }
+      footer h2 {
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+      footer .links {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      footer .link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 6px;
+        color: #475569;
+        text-decoration: none;
+        padding: 6px 14px 6px 14px;
+        min-width: 130px;
+        border-radius: 20px;
+        background: #f1f5f9;
+        transition: all 0.2s;
+        font-size: 0.85rem;
+        font-weight: 400;
+        white-space: nowrap;
+        min-height: 28px;
+      }
+      footer .link:hover {
+        background: #e2e8f0;
+        transform: translateY(-1px);
+      }
+      footer .avatar {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      @media (max-width: 768px) {
+        body {
+          font-size: 0.9rem;
+        }
+        h1 {
+          font-size: 1.9rem;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        .top-links {
+          flex-direction: column;
+          gap: 12px;
+        }
+        .timeline::before {
+          left: 18px;
+        }
+        .timeline-item,
+        .timeline-item:nth-child(even) {
+          flex-direction: column;
+        }
+        .timeline-content {
+          width: 100%;
+          margin-bottom: 24px;
+        }
+        .timeline-content::before {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Susanna Brechko</h1>
+        <p class="subtitle">Google Ads Expert | PPC & SEM | Lead Generation</p>
+
+        <p>
+          Let’s build profitable, scalable Google Ads campaigns – message me to
+          get started.
+        </p>
+
+        <div class="top-links">
+          <a
+            href="https://www.linkedin.com/in/susanna-brechko/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a href="mailto:iamsusanna.b@email.com">Email me</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews first -->
+    <section class="reviews" id="reviews">
+      <h2>What clients say</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "Susanna was great. She clarified my Brand Search questions
+            immediately and was super honest on what my project needed to
+            succeed. I really respect her honesty and understanding to the craft
+            of google ads. If you need Lead Gen help, hire her. She’s
+            trustworthy and knows her stuff."
+          </p>
+          <div class="review-author">Small business, Canada</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "Susanna helped me a lot in understanding some quite tricky things
+            in Google Ads and made my client happy by increasing the number of
+            orders."
+          </p>
+          <div class="review-author">Entertainment company, Germany</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "Susanna is an extremely knowledgeable and experienced Google Ads
+            marketer. She provided us a lot of detailed insights and
+            constructive feedback! I would always hire her again!"
+          </p>
+          <div class="review-author">AI-powered Assistant, Germany</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "I'm so happy I found Susanna online. My previous experience with
+            marketers has been sketchy at best but Susanna was a breath of fresh
+            air. She is a true professional, takes her time to understand the
+            ads, gives relevant feedback and not just generic responses. I also
+            love the fact she is available whenever I need her. I decided to
+            re-hire her for 2 more marketing projects. Thank you Susanna"
+          </p>
+          <div class="review-author">Digital marketer, South Africa</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience" id="experience">
+      <h2>Experience</h2>
+      <ul>
+        <li class="exp-item">
+          <div class="exp-header">
+            <h3 class="exp-title">Self-employed</h3>
+            <span class="exp-date">2025 – Present</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>
+              Reduced CPA by 20–45% through campaign restructuring, search
+              intent refinement, and full-funnel optimization.
+            </li>
+            <li>
+              Built scalable campaign structures (Search, PMax, remarketing) to
+              improve ROAS and long-term account stability.
+            </li>
+            <li>
+              Provided strategic scaling recommendations based on data analysis
+              and business goals.
+            </li>
+          </ul>
+        </li>
+        <li class="exp-item">
+          <div class="exp-header">
+            <h3 class="exp-title">MixDigital</h3>
+            <span class="exp-date">2022 – 2023</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>
+              Improved campaign ROAS by 30–55% via keyword restructuring,
+              audience segmentation, and smart bid adjustments.
+            </li>
+            <li>
+              Conducted full-funnel performance analysis (ads → landing →
+              checkout), identifying bottlenecks that increased qualified lead
+              volume by 60%+.
+            </li>
+            <li>
+              Provided strategic scaling recommendations based on performance
+              data, enabling consistent month-over-month revenue growth.
+            </li>
+          </ul>
+        </li>
+        <li class="exp-item">
+          <div class="exp-header">
+            <h3 class="exp-title">Elite Experience (Austria)</h3>
+            <span class="exp-date">2021 – 2022</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>
+              Increased Google Ads revenue by 40% within the first month through
+              campaign restructuring and smart bid automation.
+            </li>
+            <li>
+              Managed monthly budgets up to $15,000+, ensuring KPI achievement
+              across reach and performance objectives.
+            </li>
+            <li>
+              Launched and optimized A/B tests (ads & landing pages), improving
+              CTR by 20–35% across key campaigns.
+            </li>
+          </ul>
+        </li>
+        <li class="exp-item">
+          <div class="exp-header">
+            <h3 class="exp-title">OMD OM Group Ukraine</h3>
+            <span class="exp-date">2021</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>
+              Built and executed paid media strategies for an international
+              pharmacy brand, managing cross-channel campaigns (Google & Meta).
+            </li>
+            <li>
+              Managed monthly budgets up to $10,000+, ensuring KPI achievement
+              across reach and performance objectives.
+            </li>
+            <li>
+              Identified new scalable audience clusters via interest layering
+              and creative testing.
+            </li>
+          </ul>
+        </li>
+        <li class="exp-item">
+          <div class="exp-header">
+            <h3 class="exp-title">SvitSoft</h3>
+            <span class="exp-date">2019 – 2021</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>
+              Reduced CPA by 20–35% through campaign restructuring, negative
+              keyword optimization, and bid strategy refinement.
+            </li>
+            <li>
+              Conducted performance audits that led to onboarding 5 new clients
+              for the agency.
+            </li>
+            <li>
+              Implemented advanced tracking (GTM, call tracking,
+              micro-conversions), improving attribution accuracy and campaign
+              scaling decisions.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <h2>My work</h2>
+      <div class="links">
+        <a
+          href="https://www.upwork.com/freelancers/hiresusanna"
+          class="link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Upwork
+        </a>
+        <a
+          href="https://www.fiverr.com/s/AyAakgB"
+          class="link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Fiverr
+        </a>
+      </div>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(
+          (entry) => entry.isIntersecting && entry.target.classList.add("show"),
+        );
+      });
+      document
+        .querySelectorAll(".timeline-item")
+        .forEach((item) => observer.observe(item));
+    </script>
+  </body>
+</html>
